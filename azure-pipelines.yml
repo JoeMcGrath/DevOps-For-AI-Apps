@@ -19,7 +19,8 @@ steps:
     imageName: 'joemctestacr.azurecr.io/aitest:$(Build.BuildId)'
 - task: Docker@1
   displayName: 'Login to ACR'
-  azureSubscriptionEndpoint: ' joemcacrtestconnection'
+  azureSubscriptionEndpoint: 'joemcacrtestconnection'
+  azureContainerRegistry joemctestacr.azurecr.io
   command: login
 - task: Docker@1
   displayName: 'Push Image to ACR'
