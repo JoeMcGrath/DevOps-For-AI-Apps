@@ -20,7 +20,7 @@ steps:
 - task: Docker@1
   displayName: 'Login to ACR'
   azureSubscriptionEndpoint: 'joemcacrtestconnection'
-  azureContainerRegistry joemctestacr.azurecr.io
+  azureContainerRegistry: joemctestacr.azurecr.io
   command: login
 - task: Docker@1
   displayName: 'Push Image to ACR'
