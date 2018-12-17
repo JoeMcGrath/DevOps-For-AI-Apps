@@ -13,5 +13,16 @@ variables:
   imageName: 'your-container-image-name:$(build.buildId)'
 
 steps:
-- script: docker build -f Dockerfile -t $(imageName) .
-  displayName: 'docker build'
+- task: DockerBuild
+  displayName: 'Build an Image'
+  inputs:
+    imageName: 'joemctestacr.azurecr.io/aitest:$(Build.BuildId)'
+-task: DockerLogin
+  displayName: 'Login to ACR'
+  azureSubscriptionEndpoint: ' joemcacrtestconnection'
+  command: login
+-task: DockerPush
+  displayName: 'Push Image to ACR'
+  inputs:
+    command: 'push'
+    imageName: 'joemctestacr.azurecr.io/aitest:$(Build.BuildId)'
