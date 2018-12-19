@@ -33,7 +33,9 @@ def init():
 
     # Load model and load the model from brainscript (3rd index)
     trainedModel = load_model(MODEL_FILE)
-    trainedModel = combine([trainedModel.outputs[3].owner])
+    logger.info("Model File Loaded")
+    trainedModel = combine([trainedModel.outputs[2].owner])
+    logger.info("Model Trained")
     end = t.default_timer()
 
     loadTimeMsg = "Model loading time: {0} ms".format(round((end - start) * 1000, 2))
